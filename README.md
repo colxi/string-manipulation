@@ -1,4 +1,4 @@
-# data-type-convert (FASM)
+# string-manipulation (FASM)
 
 **16BIT x86 minimal library written in FASM assembly**, focused into provide the essential resources, for **String Manipulation**. Code is no OS dependant, so should run under all kind of 16BIT enviroments, and could be easilly ported to 32BIT architectures.
 
@@ -14,8 +14,8 @@
 ###  Usage Specifications:
 Procedure | Input Registers | Output
 ------------ | ------------- | -------------
-`strcmp`   | Expects String1 pointer in the **AX** register, and String2 pointer in **BX** | CX=1 if equal, CX=0 if not equal
-`strlen`  |  Operates with the string  pointer of the **AX** register | Characters count in CX
+`strcmp`   | Expects String1 pointer in the **AX** register, and String2 pointer in **BX** | **CX=1** if equal, **CX=0** if not equal
+`strlen`  |  Operates with the string  pointer of the **AX** register | Characters count in **CX**
 `trim` |   Operates with the string pointer of the **AX** register   |  Pointer to the trimed string in **AX**
 `rtrim` |  Operates with the string  pointer of the **AX** register   |  Pointer to the trimed string in **AX**
 `ltrim` |  Operates with the string  pointer of the **AX** register   |  Pointer to the trimed string in **AX**
@@ -23,6 +23,7 @@ Procedure | Input Registers | Output
 **Input**: All provided Strings must be ended with a NULL character.
 
 **Output trim, rtrim, ltrim**: All the *trim* procedures, modify the original string, and will remove the following characters :
+
     - SPACEBAR chars          (" ")
     - TABS chars              (\t)
     - New Line chars          (\r)
