@@ -22,7 +22,7 @@ Procedure | Input Registers | Output
 
 **Input**: All provided Strings must be ended with a NULL character.
 
-**Output trim, rtrim, ltrim**: All the *trim* procedures, modify the original string, and will remove the following characters :
+**Output trim, rtrim, ltrim**: All the *trim* procedures, modify the original string, and will remove the following characters from left, right or both sides of the string, depending the invokd procedura :
 
     - SPACEBAR chars          (" ")
     - TABS chars              (\t)
@@ -76,6 +76,5 @@ include 'lib/data-type-convert.asm'
 
 ### Todo
 
- - Implement inverse procedures: `atoi` | `atoui` | `atohex` | `atobin`
-
+ - Implement more procedures
 
