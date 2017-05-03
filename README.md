@@ -45,7 +45,7 @@ main:
 	mov	ax,	0x8000
 	mov	ss,	ax
 	mov	sp,	0x0000
-    ;*** Make converstion! ***
+    ;*** Trim String... ***
     mov ax, myString
     call    trim
     ; *** Conversion done ***
@@ -76,5 +76,5 @@ include 'lib/data-type-convert.asm'
 
 ### Todo
 
- - Implement more procedures
+ - Implement more procedures ( toupper | tolower | strtoupper | strtolower )
 
