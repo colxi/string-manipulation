@@ -6,7 +6,9 @@
 ;                   the essential resources, to string manipulation
 ;
 ;                   Contents:
-;                   strcmp | strlen | trim | ltrim | rtrim
+;                   strcmp | strlen | strchr | trim | ltrim | rtrim
+;                   To do:
+;                   toupper | tolower | strtoupper | strtolower
 ;
 ;  Version        : 1.0
 ;  Created        : 27/03/2017
@@ -98,6 +100,47 @@ strlen:
         popf
         RET
 
+
+
+;;******************************************************************************
+ ;  strchr() -  Searchs first match of the provided CHAR in the requested STRING
+ ;              and returns a pointer to it or NULL (0x0000) if no match.
+ ;  Input:
+ ;      AX - pointer to String
+ ;      BL - character to find
+ ;  Ouptut:
+ ;      CX - Pointer to position (or NULL if no match)
+ ;  Modifies:
+ ;      -none-
+ ;
+ ;******************************************************************************
+strchr:
+    pushf
+    pusha
+    push    si
+
+    cld                                 ; CLear Direction flag. Direction:ASC
+    mov     si,     ax                  ; ds:SI points to string
+
+    mov     cx,     0x0000              ; init with FALSE ,the search result
+    .nextChar:
+        lodsb                           ; load into AL next char from string
+                                        ; ( lodsb will autoincrement SI )
+        cmp     al,     bl              ; Compare characters
+        je      .found                  ; break loop if found
+
+        cmp     [si],   byte 0x00       ;  ¿ end of string ?
+        jne     .nextChar               ; no... get next char
+        jmp     .done                   ; yes... done!
+    .found:
+        dec     si
+        mov     cx,     si              ; set the pointer of the match
+        ;-----------------------------------------------------------------------
+    .done:
+        pop     si
+        popa
+        popf
+        RET
 
 
 ;;******************************************************************************
@@ -236,3 +279,13 @@ rtrim:
     pop     si
     popf                                ; recover FLAGS
     RET
+
+
+
+;toupper
+;tolower
+;strtoupper
+;strtolower
+;isalpha
+;isdigit
+;isalnum
