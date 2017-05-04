@@ -116,7 +116,7 @@ strlen:
  ;******************************************************************************
 strchr:
     pushf
-    pusha
+    push    ax
     push    si
 
     cld                                 ; CLear Direction flag. Direction:ASC
@@ -138,7 +138,7 @@ strchr:
         ;-----------------------------------------------------------------------
     .done:
         pop     si
-        popa
+        pop     ax
         popf
         RET
 

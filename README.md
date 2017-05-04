@@ -17,7 +17,7 @@ Procedure | Input Registers | Output
 ------------ | ------------- | -------------
 `strcmp`   | Expects String1 pointer in the **AX** register, and String2 pointer in **BX** | **CX=1** if equal, **CX=0** if not equal
 `strlen`  |  Operates with the string  pointer of the **AX** register | Characters count in **CX**
-`strchr`  |  Search the first match of a char in a string | Pointer to char in **CX** (or NULL)
+`strchr`  |  Expects the string pointer in **AX** and the char to find in *BL* | Pointer to char in **CX** (or NULL)
 `trim` |   Operates with the string pointer of the **AX** register   |  Pointer to the trimed string in **AX**
 `rtrim` |  Operates with the string  pointer of the **AX** register   |  Pointer to the trimed string in **AX**
 `ltrim` |  Operates with the string  pointer of the **AX** register   |  Pointer to the trimed string in **AX**
