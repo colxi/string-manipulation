@@ -10,7 +10,7 @@
 ;                   To do:
 ;                   toupper | tolower | strtoupper | strtolower
 ;
-;  Version        : 1.0
+;  Version        : 1.1
 ;  Created        : 27/03/2017
 ;  Author         : colxi
 ;
@@ -280,6 +280,42 @@ rtrim:
     popf                                ; recover FLAGS
     RET
 
+
+
+;;******************************************************************************
+ ;  isPrintable() : Analyze character in AL, and determine if is a printable
+ ;                  char.
+ ;  Input:
+ ;      AL : Character to analyze
+ ;  Output:
+ ;      CL : 0x01 for true and 0x00 for false
+ ;  Modifies:
+ ;      (none)
+ ;
+ ;******************************************************************************
+isPrintable:
+    mov     cl ,    0x01    ; by default is printable
+    cmp     al ,    0x1F    ; check AL value agains 0x21
+    ja      .done           ; if is GREATER is printable, done!
+    mov     cl ,    0x00    ; if is lower, is not printable
+    .done:
+        RET
+
+
+;;******************************************************************************
+ ;
+ ;
+ ; mask AL with AH if character in AL is not printable
+ ;******************************************************************************
+maskNotPrintable:
+    push cx
+    call    isPrintable
+    cmp     cl,     0x01
+    je      .done
+    mov     al ,    ah
+    .done:
+        pop cx
+        RET
 
 
 ;toupper
